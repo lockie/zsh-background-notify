@@ -7,6 +7,8 @@ zmodload zsh/datetime || { print "can't load zsh/datetime"; return } # faster th
 autoload -Uz add-zsh-hook || { print "can't add zsh hook!"; return }
 
 (( ${+bgnotify_threshold} )) || bgnotify_threshold=5 #default 10 seconds
+(( ${+bgnotify_icon} )) || bgnotify_icon=/usr/share/icons/Tango/32x32/apps/utilities-terminal.png
+
 
 
 ## definitions ##
@@ -40,7 +42,7 @@ bgnotify () { ## args: (title, subtitle)
   elif hash growlnotify 2>/dev/null; then #osx growl
     growlnotify -m "$1" "$2"
   elif hash notify-send 2>/dev/null; then #ubuntu gnome!
-    notify-send "$1" "$2"
+    notify-send -t 0 -i $bgnotify_icon "$1" "$2"
   elif hash kdialog 2>/dev/null; then #ubuntu kde!
     kdialog  -title "$1" --passivepopup  "$2" 5
   elif hash notifu 2>/dev/null; then #cygwyn support!
