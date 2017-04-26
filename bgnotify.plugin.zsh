@@ -18,7 +18,7 @@ if ! (type bgnotify_formatted | /bin/grep -q 'function'); then ## allow custom f
     elapsed="$(( $3 % 60 ))s"
     (( $3 >= 60 )) && elapsed="$((( $3 % 3600) / 60 ))m $elapsed"
     (( $3 >= 3600 )) && elapsed="$(( $3 / 3600 ))h $elapsed"
-    [ $1 -eq 0 ] && bgnotify "#win (took $elapsed)" "$2" || bgnotify "#fail (took $elapsed)" "$2"
+    [ $1 -eq 0 ] && bgnotify "✓ $2" "$elapsed" || bgnotify "✗ $2" "$elapsed"
   }
 fi
 
