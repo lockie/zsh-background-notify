@@ -7,7 +7,7 @@ zmodload zsh/datetime || { print "can't load zsh/datetime"; return } # faster th
 autoload -Uz add-zsh-hook || { print "can't add zsh hook!"; return }
 
 (( ${+bgnotify_threshold} )) || bgnotify_threshold=5 #default 10 seconds
-(( ${+bgnotify_icon} )) || bgnotify_icon=/usr/share/icons/Tango/32x32/apps/utilities-terminal.png
+(( ${+bgnotify_icon} )) || bgnotify_icon=/usr/share/icons/hicolor/512x512/apps/terminal.png
 
 
 
